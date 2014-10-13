@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html ng-app = "App">
+
+  <head>
+    <meta charset="utf-8">
+     <script src="../bower_components/angular/angular.js"></script>
+    <script src="scripts/app.js"></script>
+    <script type="text/javascript" src="https://rawgithub.com/hiddentao/google-tts/master/google-tts.min.js"></script>
+  </head>
+
+  <body ng-controller="AppController">
+      <form novalidate name="form">   
+        <input type="text" id="text" ng-model="results.translate" required></input>
+        <button ng-disabled="form.$invalid" ng-click="playMe()">Submit</button>
+       <button>Another button</button>  --><!--trigger startButton
+        <script>
+          // if(!('webkitSpeechRecognition' in window)) {
+          //   upgrade();
+          // } else {
+          //   var recognition = new webkitSpeechRecognition();
+          //   recognition.continuous = true;
+          //   recognition.interimResults = true;
+          //   var startButton = function(event) {
+          //     finalTranscript = '';
+          //     recognition.lang = 'en-US';
+          //     recognition.start();
+          //   }
+          //   var recognition.onresult = function(event) {
+          //     var interim_transcript = '';
+          //     for (var i = event.resultIndex)
+          //   }
+          // }
+
+        </script>
+      </form>
+    </div>
+  </body>
+
+</html>
