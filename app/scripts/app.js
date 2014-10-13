@@ -41,34 +41,38 @@ angular.module('App', [])
           }
         }
         console.log("final transcript", finalTranscript);
-        AppFactory.translate(finalTranscript).then(function(data) {
-        console.log("translated data", data)
+        if ($scope.languages.select == 'cmn-Hans-CN') {
+          var source = "zh-CN";
+        } else if ($scope.languages.select === 'yue-Hant-HK' || 'ccmn-Hans-HK' || 'cmn-Hant-TW') {
+          var source = "Zh-TW";
+        } else {
+          var source = $scope.languages.select.slice(0,2);
+        }
+        console.log("source", source);
+        AppFactory.translate(finalTranscript, source).then(function(data) {
         var msg = new SpeechSynthesisUtterance(data);
-        msg.lang = "zh-CN";
+        msg.lang = "en";
         speechSynthesis.speak(msg);
         });
       }
     };
 
-    
     if (recognizing) {
       recognition.stop();
       return;
     } 
     finalTranscript = '';
-    recognition.lang = langs;                
+    recognition.lang = $scope.languages.select; 
     recognition.start();
   }
 })
 
 .factory('AppFactory', function ($http) {
 
-  var translate = function(text) { 
+  var translate = function(text, source) { 
     var key = 'AIzaSyAq-uqUL0NgGwbfTbOfE5SMKnnWWjqOfCg';
     var test = encodeURIComponent(text);
-    var source = languages.select;
-    console.log(source)
-    var target = 'zh-CN'
+    var target = 'en'
     return $http.get('https://www.googleapis.com/language/translate/v2?key=' + key + '&q=' + text + '&source=' + source + '&target=' + target)
       .then(function(resp) {
         return resp.data.data.translations[0].translatedText;
