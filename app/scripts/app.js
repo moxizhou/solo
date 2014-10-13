@@ -2,18 +2,8 @@
 angular.module('App', [])
 
 .controller('AppController', function ($scope, AppFactory) {
-  
-  $scope.results = {};
-  $scope.test = {};
 
-  $scope.playMe = function(){
-    AppFactory.translate($scope.test.test).then(function(data) {
-      console.log("translated data", data)
-      var msg = new SpeechSynthesisUtterance(data);
-      msg.lang = "zh-CN";
-      speechSynthesis.speak(msg);
-    });
-  },
+  var languages = {};
 
   $scope.voice = function() {
     var finalTranscript = '';
@@ -66,7 +56,7 @@ angular.module('App', [])
       return;
     } 
     finalTranscript = '';
-    recognition.lang = 'en-US';                
+    recognition.lang = langs;                
     recognition.start();
   }
 })
@@ -76,15 +66,17 @@ angular.module('App', [])
   var translate = function(text) { 
     var key = 'AIzaSyAq-uqUL0NgGwbfTbOfE5SMKnnWWjqOfCg';
     var test = encodeURIComponent(text);
-    var source = 'en';
+    var source = languages.select;
+    console.log(source)
     var target = 'zh-CN'
     return $http.get('https://www.googleapis.com/language/translate/v2?key=' + key + '&q=' + text + '&source=' + source + '&target=' + target)
       .then(function(resp) {
         return resp.data.data.translations[0].translatedText;
       });
   };
+
   return {
-    translate: translate
+    translate: translate,
   };
 
 });

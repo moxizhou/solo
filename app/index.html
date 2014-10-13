@@ -7,20 +7,23 @@
   <head>
      <script src="../bower_components/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="langs.js"></script>
   </head>
 
   <body ng-controller="AppController">
-      <form novalidate name="form">   
-        <input type="text" id="text" ng-model="results.translate" required></input>
-        <button ng-disabled="form.$invalid" ng-click="playMe()">Submit</button>
-       <button id="test" ng-click="voice()">Another button</button>  
-        <script>
+    <div id="div_language">
+      <select id="selectLanguage" ng-model="languages.select">Input Language</select>
+      {{languages.select}}
+      <script>
+      
+      for (var i = 0; i < langs.length; i++) {
+        selectLanguage.options[i] = new Option(langs[i][0], langs[i][1]);
+      }
 
-         
+      </script>
 
-        </script>
-      </form>
     </div>
+    <button id="test" ng-click="voice()">Click and speak</button>  
   </body>
 
 </html>
