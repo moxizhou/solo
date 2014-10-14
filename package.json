@@ -1,10 +1,8 @@
 {
-  "name": "sps",
-  "version": "0.0.1",
-  "dependencies": {
-  	"express": "~4.0.0",
-  	},
-  "engines": {
-  	"node": "0.10.x"
-  }
+	"name": "sps",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "~4.0.0",
+		"grunt": "^0.4.1"
+		}
 }
