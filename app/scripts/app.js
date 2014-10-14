@@ -3,6 +3,7 @@ angular.module('App', [])
 
 .controller('AppController', function ($scope, AppFactory) {
   var languages = {};
+  $scope.translations = [];
   $scope.dialects = undefined;
 
   $scope.langs2 = [
@@ -73,8 +74,7 @@ angular.module('App', [])
  $scope.updateCountry = function() {
     for (var i = 0; i < langs2.length ; i++) {
       if ($scope.languages.select.name === (langs2[i][0])) {
-        var test = langs2[i].slice(1)
-        $scope.dialects = test
+        $scope.dialects = langs2[i].slice(1)
         }
       }
   };
@@ -153,11 +153,13 @@ angular.module('App', [])
         var source = AppFactory.source($scope.languages.dialect[0]);
         var target = $scope.languages.output.code;
         console.log("final transcript", finalTranscript, "and source", source);
+
         
         AppFactory.translate(finalTranscript, source, target).then(function(data) {
         console.log(data)
         var msg = new SpeechSynthesisUtterance(data);
         msg.lang = target;
+        $scope.translations.push({input: finalTranscript + '-' + $scope.languages.select.name, output: msg.text + '-' + $scope.languages.output.name})
         speechSynthesis.speak(msg);
         });
       }

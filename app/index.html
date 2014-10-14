@@ -7,7 +7,8 @@
     <script src="lib/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
     <script src="langs.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link data-require="ng-table@*" data-semver="0.3.0" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.css" />
   </head>
 
   <h1> Translate Me! </h1>
@@ -24,7 +25,22 @@
         <select id="outputLanguage" ng-model="languages.output" ng-options="language.name for language in outlangs"></select>
       </div>
     </div>
-    <button id="test" ng-click="voice()"> Click and speak</button>  
+    <button id="test" ng-click="voice()"> Click and speak</button> 
+    <div id="recent">
+      <div id="test2">Most recent translations</div>
+      <table ng-table class="table">
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="translation in translations">
+            <td data-title="'input'">{{translation.input}}</td>
+            <td data-title="'output'">{{translation.output}}</td>
+          </tbody>
+      </table>
+    </div> 
   </body>
 
 </html>

@@ -1,6 +1,8 @@
 body {
 	margin: 30px;
 	text-align: center;
+	font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+
 }
 
 #output_language {
@@ -17,5 +19,43 @@ body {
 	height: 50px;
 	border-radius: 10px;
 	font-size: 19px;
-	font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;;
+}
+
+#recent {
+	margin-top: 200px;
+	font-size: 20px;
+}
+
+.table {
+	font-size: 17px;
+	line-height: 1.5;
+	color: #333;
+	display: table;
+	position: relative;
+	margin: 0 auto;
+	width: 50%;
+	border: 1px solid gray;
+	text-align: center;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+#test2 {
+	/*font-weight: bold;*/
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+th{
+	text-align: middle;
+	background-color: lightgray;
+}
+
+tr {
+	display: table-row;
+	text-align: middle;
 }
