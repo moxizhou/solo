@@ -40,18 +40,13 @@ angular.module('App', [])
             interimTranscript += event.results[i][0].transcript;
           }
         }
-        
-        if ($scope.languages.select == 'cmn-Hans-CN') {
-          var source = "zh-CN";
-        } else if ($scope.languages.select === 'yue-Hant-HK' || 'ccmn-Hans-HK' || 'cmn-Hant-TW') {
-          var source = "Zh-TW";
-        } else {
-          var source = $scope.languages.select.slice(0,2);
-        }
+
+        var source = AppFactory.source($scope.languages.select);
+        var target = $scope.languages.output;
         console.log("final transcript", finalTranscript, "and source", source);
         
-        var target = $scope.languages.output;
         AppFactory.translate(finalTranscript, source, target).then(function(data) {
+        console.log(data)
         var msg = new SpeechSynthesisUtterance(data);
         msg.lang = target;
         speechSynthesis.speak(msg);
@@ -80,8 +75,19 @@ angular.module('App', [])
       });
   };
 
+  var source = function(input) {
+    if (input === 'cmn-Hans-CN') {
+      return "zh-CN";
+    } else if (input === 'yue-Hant-HK' || input ==='ccmn-Hans-HK' || input ==='cmn-Hant-TW') {
+      return "Zh-TW";
+    } else {
+      return input.slice(0,2);
+    }
+  };
+
   return {
     translate: translate,
+    source: source
   };
 
 });

@@ -1,11 +1,10 @@
 <!doctype html>
 <meta charset="utf-8">
 
-
 <html ng-app = "App">
 
   <head>
-     <script src="../bower_components/angular/angular.js"></script>
+    <script src="lib/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
     <script src="langs.js"></script>
   </head>
@@ -13,6 +12,7 @@
   <body ng-controller="AppController">
     <div id="select_language">
       Input Language<select id="selectLanguage" ng-model="languages.select"></select>
+      Input Accent <select id="select_dialect"></select>
     </div>
     <div id="output_language">
       Output Language<select id="outputLanguage" ng-model="languages.output"></select>
@@ -22,13 +22,31 @@
       for (var i = 0; i < langs.length; i++) {
         selectLanguage.options[i] = new Option(langs[i][0], langs[i][1]);
       }
+      // selectLanguage.selectedIndex = 6;
+      // select_dialect.selectedIndex = 6;
+      //   console.log(i)
+
+      // var updateCountry = function() {
+      //   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
+      //     select_dialect.remove(i);
+      //   }
+
+      //   var list = langs[selectLanguage.selectedIndex];
+  
+      //   for (var i = 1; i < list.length; i++) {
+      //     select_dialect.options.add(new Option(list[i][1], list[i][0]));
+      //   }
+      
+      //   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
+      // }
 
       for (var i = 0; i < outlangs.length; i++) {
         outputLanguage.options[i] = new Option(outlangs[i][0], outlangs[i][1]);
       }
 
+      // updateCountry();
       </script>
-    <button id="test" ng-click="voice()">Click and speak</button>  
+    <button id="test" ng-click="voice()"> <!-- <img id="start_img" src="images/mic.jpeg"> -->Click and speak</button>  
   </body>
 
 </html>
