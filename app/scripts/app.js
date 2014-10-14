@@ -150,7 +150,7 @@ angular.module('App', [])
           }
         }
 
-        var source = AppFactory.source($scope.languages.select.code);
+        var source = AppFactory.source($scope.languages.dialect[0]);
         var target = $scope.languages.output.code;
         console.log("final transcript", finalTranscript, "and source", source);
         
@@ -170,7 +170,7 @@ angular.module('App', [])
     } 
 
     finalTranscript = '';
-    recognition.lang = $scope.languages.select.code; 
+    recognition.lang = $scope.languages.dialect[0]; 
     recognition.start();
   }
 })
