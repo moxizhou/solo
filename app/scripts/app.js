@@ -1,9 +1,13 @@
 'use strict';
 angular.module('App', [])
 
-.controller('AppController', function ($scope, AppFactory) {
+.controller('AppController', function ($scope, AppFactory, ButtonFactory) {
 
   var languages = {};
+
+  // $scope.updateCountry = function(){
+  //   var list = langs[selectedLanguage.selectedIndex];
+  // };
 
   $scope.voice = function() {
     var finalTranscript = '';
@@ -40,7 +44,7 @@ angular.module('App', [])
             interimTranscript += event.results[i][0].transcript;
           }
         }
-
+        
         var source = AppFactory.source($scope.languages.select);
         var target = $scope.languages.output;
         console.log("final transcript", finalTranscript, "and source", source);
@@ -58,6 +62,7 @@ angular.module('App', [])
       recognition.stop();
       return;
     } 
+
     finalTranscript = '';
     recognition.lang = $scope.languages.select; 
     recognition.start();
@@ -89,6 +94,10 @@ angular.module('App', [])
     translate: translate,
     source: source
   };
+
+})
+
+.factory('ButtonFactory', function() {
 
 });
 
