@@ -14,48 +14,16 @@
 
   <body ng-controller="AppController">
     <div class="text">Input Language</div>
-    <div id="select_language">
-      <select id="selectLanguage" ng-model="languages.select" onchange="updateCountry()"></select>
-      <!-- {{languages.select}} -->
-      <select id="select_dialect" ng-model="languages.dialect"></select>
+    <div>
+      <div id="select_language">
+        <select id="selectLanguage" ng-model="languages.select" ng-options="language.name for language in langs2" ng-change="updateCountry()"></select>
+        <select id="select_dialect" ng-model="languages.dialect" ng-options="dialect[1] for dialect in dialects"></select>
+      </div>
+      <div id="output_language">
+        <div class="text">Output Language</div>
+        <select id="outputLanguage" ng-model="languages.output" ng-options="language.name for language in outlangs"></select>
+      </div>
     </div>
-    <div id="output_language">
-      <div class="text">Output Language</div>
-      <select id="outputLanguage" ng-model="languages.output"></select>
-    </div>
-      <script>
-
-      // for (var i = 0; i < langs.length; i++) {
-      //   selectLanguage.options[i] = new Option(langs[i][0], langs[i][1]);
-      // }
-
-      for (var i = 0; i < langs.length; i++) {
-        selectLanguage.options[i] = new Option(langs[i][0], langs[i][1]);
-      }
-
-      selectLanguage.selectedIndex=6;
-      // updateCountry();
-      select_dialect.selectedIndex=6;
-      output_language.selectedIndex;
-
-      function updateCountry() {
-        for (var i = select_dialect.options.length - 1; i >= 0; i--) {
-          select_dialect.remove(i);
-        }
-
-        var list = langs[selectLanguage.selectedIndex];
-
-        for (var i = 1; i < list.length; i++) {
-          select_dialect.options.add(new Option(list[i][1], list[i][0]));
-        }
-      
-      }
-
-      for (var i = 0; i < outlangs.length; i++) {
-        outputLanguage.options[i] = new Option(outlangs[i][0], outlangs[i][1]);
-      }
-
-      </script>
     <button id="test" ng-click="voice()"> Click and speak</button>  
   </body>
 
