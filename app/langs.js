@@ -1,4 +1,4 @@
-var langs2 =
+var langs =
 [['Afrikaans',       ['af-ZA']],
  ['Bahasa Indonesia',['id-ID']],
  ['Bahasa Melayu',   ['ms-MY']],
@@ -57,7 +57,7 @@ var langs2 =
  ['日本語',           ['ja-JP']],
  ['Lingua latīna',   ['la']]];
 
- var langs = 
+ var langs2 = 
  [['Afrikaans',       ['af-ZA']],
  ['Bahasa Indonesia',['id-ID']],
  ['Bahasa Melayu',   ['ms-MY']],

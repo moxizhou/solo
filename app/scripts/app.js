@@ -1,7 +1,7 @@
 'use strict';
 angular.module('App', [])
 
-.controller('AppController', function ($scope, AppFactory, ButtonFactory) {
+.controller('AppController', function ($scope, AppFactory) {
 
   var languages = {};
 
@@ -44,7 +44,7 @@ angular.module('App', [])
             interimTranscript += event.results[i][0].transcript;
           }
         }
-        
+
         var source = AppFactory.source($scope.languages.select);
         var target = $scope.languages.output;
         console.log("final transcript", finalTranscript, "and source", source);
@@ -97,9 +97,9 @@ angular.module('App', [])
 
 })
 
-.factory('ButtonFactory', function() {
-
-});
+// .factory('ButtonFactory', function($resource) {
+//   return $resource('/app/langs.js');
+// });
 
 
 

@@ -16,7 +16,7 @@
     <div class="text">Input Language</div>
     <div id="select_language">
       <select id="selectLanguage" ng-model="languages.select" onchange="updateCountry()"></select>
-      {{languages.select}}
+      <!-- {{languages.select}} -->
       <select id="select_dialect" ng-model="languages.dialect"></select>
     </div>
     <div id="output_language">
@@ -30,7 +30,7 @@
       // }
 
       for (var i = 0; i < langs.length; i++) {
-        selectLanguage.options[i] = new Option(langs[i][0], i);
+        selectLanguage.options[i] = new Option(langs[i][0], langs[i][1]);
       }
 
       selectLanguage.selectedIndex=6;
