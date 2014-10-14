@@ -11,17 +11,23 @@
   </head>
 
   <body ng-controller="AppController">
-    <div id="div_language">
+    <div id="select_language">
       Input Language<select id="selectLanguage" ng-model="languages.select"></select>
+    </div>
+    <div id="output_language">
+      Output Language<select id="outputLanguage" ng-model="languages.output"></select>
+    </div>
       <script>
-      
+
       for (var i = 0; i < langs.length; i++) {
         selectLanguage.options[i] = new Option(langs[i][0], langs[i][1]);
       }
 
-      </script>
+      for (var i = 0; i < outlangs.length; i++) {
+        outputLanguage.options[i] = new Option(outlangs[i][0], outlangs[i][1]);
+      }
 
-    </div>
+      </script>
     <button id="test" ng-click="voice()">Click and speak</button>  
   </body>
 

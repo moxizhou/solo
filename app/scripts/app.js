@@ -40,7 +40,7 @@ angular.module('App', [])
             interimTranscript += event.results[i][0].transcript;
           }
         }
-        console.log("final transcript", finalTranscript);
+        
         if ($scope.languages.select == 'cmn-Hans-CN') {
           var source = "zh-CN";
         } else if ($scope.languages.select === 'yue-Hant-HK' || 'ccmn-Hans-HK' || 'cmn-Hant-TW') {
@@ -48,10 +48,12 @@ angular.module('App', [])
         } else {
           var source = $scope.languages.select.slice(0,2);
         }
-        console.log("source", source);
-        AppFactory.translate(finalTranscript, source).then(function(data) {
+        console.log("final transcript", finalTranscript, "and source", source);
+        
+        var target = $scope.languages.output;
+        AppFactory.translate(finalTranscript, source, target).then(function(data) {
         var msg = new SpeechSynthesisUtterance(data);
-        msg.lang = "en";
+        msg.lang = target;
         speechSynthesis.speak(msg);
         });
       }
@@ -69,10 +71,9 @@ angular.module('App', [])
 
 .factory('AppFactory', function ($http) {
 
-  var translate = function(text, source) { 
+  var translate = function(text, source, target) { 
     var key = 'AIzaSyAq-uqUL0NgGwbfTbOfE5SMKnnWWjqOfCg';
     var test = encodeURIComponent(text);
-    var target = 'en'
     return $http.get('https://www.googleapis.com/language/translate/v2?key=' + key + '&q=' + text + '&source=' + source + '&target=' + target)
       .then(function(resp) {
         return resp.data.data.translations[0].translatedText;
