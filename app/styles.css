@@ -1,0 +1,21 @@
+body {
+	margin: 30px;
+	text-align: center;
+}
+
+#output_language {
+	margin-top:30px;
+}
+
+.text{
+	margin-bottom:5px;
+}
+
+#test {
+	margin-top:30px;
+	width: 200px;
+	height: 50px;
+	border-radius: 10px;
+	font-size: 19px;
+	font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;;
+}
