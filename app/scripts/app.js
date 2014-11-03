@@ -1,5 +1,5 @@
 'use strict';
-angular.module('App', [])
+angular.module('App', ['App.key'])
 
 .controller('AppController', function ($scope, AppFactory) {
   var languages = {};
@@ -177,10 +177,10 @@ angular.module('App', [])
   }
 })
 
-.factory('AppFactory', function ($http) {
+.factory('AppFactory', function ($http, keyFactory) {
 
   var translate = function(text, source, target) { 
-    var key = 'AIzaSyAq-uqUL0NgGwbfTbOfE5SMKnnWWjqOfCg';
+    var key = getKey();
     var test = encodeURIComponent(text);
     return $http.get('https://www.googleapis.com/language/translate/v2?key=' + key + '&q=' + text + '&source=' + source + '&target=' + target)
       .then(function(resp) {
