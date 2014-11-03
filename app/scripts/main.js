@@ -1,5 +1,5 @@
 angular.module('App.key', [])
-	.factory('keyFactory', function() {
+	.factory('KeyFactory', function() {
 		var getKey = function(){
 			var key = 'AIzaSyAq-uqUL0NgGwbfTbOfE5SMKnnWWjqOfCg';
 			return key;
