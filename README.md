@@ -1,5 +1,5 @@
 
-This is a project I completed as a student at [Hack Reactor](http://hackreactor.com). This project was part of a 1.5 day hackathon.
+This project was completed as a student of [Hack Reactor](http://hackreactor.com). This project was part of a 1.5 day hackathon.
 
 # Translate Me #
 Translate what you speak into a different language!
